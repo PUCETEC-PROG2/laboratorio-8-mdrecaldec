@@ -1,7 +1,8 @@
 from django.http import HttpResponse
 from django.template import loader
-from .models import Pokemon
-
+from models import Pokemon
+from pokedex.forms import PokemonFrom
+from django.shortcuts import redirect, render
 def index(request):
     pokemons = Pokemon.objects.order_by('type') #se conoce como orm este enlace a base de datos
     template = loader.get_template('index.html')
@@ -14,3 +15,15 @@ def pokemon(request, pokemon_id):
         'pokemon': pokemon
     }
     return HttpResponse(template.render(context, request))
+
+def add_pokemon(request):
+    if request.method == 'POST':
+        form = PokemonFrom(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('pokedex:index')
+        
+    else:
+        form = PokemonFrom()
+        
+    return render(request, 'add_pokemon.html', {'form': form})
