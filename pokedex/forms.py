@@ -1,7 +1,7 @@
 from django import forms
 from .models import Pokemon
 
-class PokemonFrom(forms.ModelForm):
+class PokemonForm(forms.ModelForm):
     class Meta:
         model = Pokemon
         # fields = ['name', 'type', 'weight', 'height', 'trainer', 'picture']
