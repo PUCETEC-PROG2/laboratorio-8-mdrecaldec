@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django.contrib.admin',
-    'django.contrib.auth',
+    'django.contrib.auth', #SE ENCARGA DE MANEJAR EL CONFI DE LOGIN
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -130,3 +130,8 @@ MEDIA_ROOT = BASE_DIR / 'media' #ESTE HACE LA CARGA
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#configuracion de autenticaciones
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+LOGIN_URL = 'pokedex:login' #login url se usa cuando el usuario se registre vaya a pokemon login
