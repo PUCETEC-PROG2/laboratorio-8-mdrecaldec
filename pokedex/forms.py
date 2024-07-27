@@ -12,6 +12,5 @@ class PokemonForm(forms.ModelForm):
             'weight': forms.NumberInput(attrs={'class': 'form-control'}),
             'height': forms.Select(attrs={'class': 'form-control'}),
             'trainer': forms.Select(attrs={'class': 'form-control'}),
-            'picture': forms.ClearableFileInput(attrs={'class': 'form-control'}),
-            
+            'picture': forms.ClearableFileInput(attrs={'class': 'form-control'}),   
         }

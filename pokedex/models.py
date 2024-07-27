@@ -28,7 +28,7 @@ class Pokemon (models.Model):
     trainer = models.ForeignKey(Trainer, on_delete=models.CASCADE)#con el cascade se borra el entrenador y todos los pokemones es necesario usar 
     #una llave foranea directamente a Trainer
     picture = models.ImageField(upload_to='pokemon_images')
-    #una llave foranea directamente a Trainer
+   
     
     
     def __str__(self) -> str:
