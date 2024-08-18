@@ -2,36 +2,31 @@
 {% block title %}POKEDEX{% endblock title %}
 {% block content %}
     <p class="p-2">Hola, este es tu primer sitio en Django</p>
-    <a href="{% url 'pokedex:add_pokemon' %}">Crear Pokemon</a>
-    <div class=card-group>
-
-        {% for  pokemon in pokemons %}
+    <a href="{% url 'pokedex:add_pokemon' %}" class="btn btn-success mb-3">Crear Pokemon</a>
+    <div class="card-group">
+        {% for pokemon in pokemons %}
             <div class="card">
-                <img src="{{ pokemon.picture.url }}" alt="">
+                <img src="{{ pokemon.picture.url }}" alt="" class="card-img-top">
                 <div class="card-body">
-                    <h4 class="card-title">{{pokemon}}</h4>
+                    <h4 class="card-title">{{ pokemon }}</h4>
                     <p class="card-text">
-                        Entrenador: {{ pokemon.trainer }}
+                        Entrenador: {{ pokemon.trainer }}<br>
                         Peso: {{ pokemon.weight }}
                     </p>
-                    <a href="pokemon/{{ pokemon.id }}" class="btn btn-primary">
-                        <i class="fa-regular fa-eye"></i>
+                    <a href="{% url 'pokedex:pokemon' pokemon.id %}" class="btn btn-primary" title="Ver">
+                        <i class="bi bi-eye"></i> <!-- Icono de ver -->
                     </a>
                     {% if user.is_authenticated %}
-                    <a href="edit_pokemon/{{ pokemon.id }}" class="btn btn-primary">
-                        <i class="fa-regular fa-pencil"></i>
+                    <a href="{% url 'pokedex:edit_pokemon' pokemon.id %}" class="btn btn-warning" title="Editar">
+                        <i class="bi bi-pencil"></i> <!-- Icono de editar -->
                     </a>
                     
-                    <a href="delete_pokemon/{{ pokemon.id }}" class="btn btn-danger">
-                        <i class="fa-regular fa-trash"></i>
-                    {% endif %}
+                    <a href="{% url 'pokedex:delete_pokemon' pokemon.id %}" class="btn btn-danger" title="Borrar">
+                        <i class="bi bi-trash"></i> <!-- Icono de borrar -->
                     </a>
+                    {% endif %}
                 </div>
             </div>
         {% endfor %}
     </div>
-    
-    
-    {% endblock content %}
-
-
+{% endblock content %}
